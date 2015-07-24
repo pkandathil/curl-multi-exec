@@ -5,7 +5,7 @@ The purpose of this project is to show how multiple curl requests can be run in 
 
 ## Installation
 
-Deploy this project as a regular code igniter project.
+Deploy this project as a regular code igniter project. *These configurations are not optimized by any standard.*
 ```
 server {
     listen   80;
@@ -26,19 +26,19 @@ server {
         try_files $uri $uri/ /index.php;
     }
         
-        # php parsing 
-        location ~ .php$ {
-            root           /path/to/your/local/direcotry/;
-            try_files $uri =404;
-            fastcgi_pass   unix:/tmp/php5-fpm.sock;
-            fastcgi_index  index.php;
-            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-            include        fastcgi_params;
-            fastcgi_buffer_size 128k;
-            fastcgi_buffers 256 4k;
-            fastcgi_busy_buffers_size 256k;
-            fastcgi_temp_file_write_size 256k;
-        }
+    # php parsing 
+    location ~ .php$ {
+        root           /path/to/your/local/direcotry/;
+        try_files $uri =404;
+        fastcgi_pass   unix:/tmp/php5-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+        fastcgi_buffer_size 128k;
+        fastcgi_buffers 256 4k;
+        fastcgi_busy_buffers_size 256k;
+        fastcgi_temp_file_write_size 256k;
+    }
 
 }
 ```
@@ -50,6 +50,8 @@ and visit
 ```localhost:<port number>/welcome/index_async```
 
 Execution time will be displayed at the bottom of each page. You will see that the execution time for the index_async is approximately half of index.
+
+If you are interested in editing the code just look at ```application/controllers/Welcome.php```
 
 ## Reasoning
 
