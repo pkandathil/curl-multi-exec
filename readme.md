@@ -1,10 +1,12 @@
-# Parallel Curl requests
-
-## What is this project?
+###################
+What is this project?
+###################
 The purpose of this project is to show how multiple curl requests can be run in parallel to reduce latency of a request
 
-## Installation
 
+########
+Installation
+########
 Deploy this project as a regular code igniter project.
 ```
 server {
@@ -31,14 +33,18 @@ server {
 }
 ```
 
-## Usage
-
-Visit ```localhost:<port number>```
+#######
+Usage
+#######
+Visit localhost:<port number>
 and visit
-```localhost:<port number>/welcome/index_async```
+localhost:<port number>/welcome/index_async
 
-Execution time will be displayed at the bottom of each page. You will see that the execution time for the index_async is approximately half of index.
+Execution time will be displayed at the bottom and you will see that the execution time for the index_async is approximately half of index.
 
-## Reasoning
+
+######
+Reasoning
+######
 
 The reason for the speed up using index async is because both curl get requests are being performed in parallel rather than sequentially.
