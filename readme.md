@@ -55,4 +55,5 @@ If you are interested in editing the code just look at ```application/controller
 
 ## Reasoning
 
-The reason for the speed up using index async is because both curl get requests are being performed in parallel rather than sequentially.
+The reason for the performance imporvement in the ```index_async``` function is because ```curl_multi_exec``` is used instead of the ```curl_exec``` function. It is monitored in a tight while loop to check if it done executing.
+
