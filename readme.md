@@ -1,7 +1,7 @@
-# Parallel Curl requests
+# Non-blocking network Curl requests in PHP
 
 ## What is this project?
-The purpose of this project is to show how multiple curl requests can be run in parallel to reduce latency of a request
+The purpose of this project is to show how multiple curl requests can be run in a non-blocking manner. This reduces the latency for a page load.
 
 ## Installation
 
@@ -55,5 +55,5 @@ If you are interested in editing the code just look at ```application/controller
 
 ## Reasoning
 
-The reason for the performance imporvement in the ```index_async``` function is because ```curl_multi_exec``` is used instead of the ```curl_exec``` function. It is monitored in a tight while loop to check if it done executing.
+The reason for the performance imporvement in the ```index_async``` function is because ```curl_multi_exec``` is used instead of the ```curl_exec``` function. It is monitored in a tight while loop to check if it is done executing.
 
