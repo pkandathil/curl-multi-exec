@@ -96,7 +96,7 @@ class Welcome extends CI_Controller {
     $response_body = explode("\n", $response_body);
     $last_line = $response_body[count($response_body) - 1];
     $final_output = $url . ": " . $last_line;
-      return $final_output;
+    return $final_output;
   }
 
 
