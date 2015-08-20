@@ -44,8 +44,21 @@ class Rest {
       }
       $running = null;
 
+      $active = null;
       do {
-          curl_multi_exec($mh, $running);
+          $mrc = curl_multi_exec($mh, $active);
+      } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+
+      while ($active && $mrc == CURLM_OK) {
+        // Wait for activity on any curl-connection
+        if (curl_multi_select($mh) == -1) {
+            usleep(1);
+        }
+
+        // Continue to exec until curl is ready to
+        // give us more data
+        do {
+          $mrc = curl_multi_exec($mh, $active);
           $info = curl_multi_info_read($mh);
           if (false !== $info) {
             $curl_info = curl_getinfo($info['handle']);
@@ -59,8 +72,8 @@ class Rest {
               }
             }
           }
+        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
       }
-      while ($running > 0);
 
       //remove handles.
       foreach ($ch as $key => $val) {
