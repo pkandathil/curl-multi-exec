@@ -3,7 +3,7 @@ defined('BASEPATH') || exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-  protected $callbacl_results = [];
+  protected $callback_results = [];
 
   /**
   * Function makes service requests sequentially. Processing the output at the end of each service call
